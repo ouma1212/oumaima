@@ -57,8 +57,9 @@ MainWindow::MainWindow(QWidget *parent)
     int w=ui->label_pic_s->width();
     int h=ui->label_pic_s->height();
     ui->label_pic_s->setPixmap(pixs.scaled(w,h,Qt::KeepAspectRatio));
+
    mSystemTrayIcon= new QSystemTrayIcon(this);
-        mSystemTrayIcon ->setIcon(QIcon(":/ myappico.png"));
+        mSystemTrayIcon ->setIcon(QIcon(":/myappico.png"));
         mSystemTrayIcon ->setVisible(true);
 
 
@@ -164,9 +165,10 @@ void MainWindow::on_ajouteravion_clicked()
     int mat = ui->mat->text().toInt();
     QString nom= ui->nom->text();
    double cap = ui->cap->text().toDouble();
+   QString dispo= ui->dispo->text();
 
 
-  Avion a(mat,nom,cap);
+  Avion a(mat,nom,cap,dispo);
   bool test=a.ajouter();
   if(test)
 {ui->tabavion->setModel(tmpavion.afficher1());//refresh
@@ -189,8 +191,9 @@ void MainWindow::on_modifieravion_clicked()
        QString nom= ui->nom2->text();
        double cap=ui->cap2->text().toDouble();
 
+       QString dispo= ui->dispo->text();
 
-       Avion a1(mat,nom,cap);
+       Avion a1(mat,nom,cap,dispo);
      bool test=a1.modifier(mat);
      if(test)
    {ui->tabavion->setModel(tmpavion.afficher1());//refresh

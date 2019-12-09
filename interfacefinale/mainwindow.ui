@@ -35,7 +35,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab_16">
      <attribute name="title">
@@ -763,7 +763,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -883,6 +883,29 @@
          <string/>
         </property>
        </widget>
+       <widget class="QLabel" name="label_103">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>300</y>
+          <width>131</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Disponibilité</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="dispo">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>300</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
        <zorder>avion1</zorder>
        <zorder>label_12</zorder>
        <zorder>label_13</zorder>
@@ -892,6 +915,8 @@
        <zorder>cap</zorder>
        <zorder>ajouteravion</zorder>
        <zorder>label_18</zorder>
+       <zorder>label_103</zorder>
+       <zorder>dispo</zorder>
       </widget>
       <widget class="QWidget" name="tab_8">
        <attribute name="title">

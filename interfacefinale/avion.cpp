@@ -7,14 +7,17 @@ nom="";
 cap=0;
 }
 
-Avion::Avion(int mat,QString nom, long cap)
+Avion::Avion(int mat,QString nom, long cap,QString dispo)
 {   this->mat=mat;
     this->nom=nom;
     this->cap=cap;
+    this->dispo=dispo;
+
 }
 int Avion::get_mat(){return  mat;}
 QString Avion::get_nom(){return nom;}
 long Avion::get_cap(){return  cap;}
+QString Avion::get_dispo(){return dispo;}
 
 
 bool Avion::ajouter()
@@ -24,11 +27,12 @@ QString res= QString::number(mat);
 QString ress= QString::number(cap);
 
 
-query.prepare("INSERT INTO AVION (MATRICULE,NOM_AVION,CAPACITE) "
-                    "VALUES (:mat, :nom, :cap )");
+query.prepare("INSERT INTO AVION (MATRICULE,NOM_AVION,CAPACITE,DISPO) "
+                    "VALUES (:mat, :nom, :cap, :dispo )");
 query.bindValue(":mat", res);
 query.bindValue(":nom", nom);
 query.bindValue(":cap", ress);
+query.bindValue(":dispo", dispo);
 
 
 
@@ -43,6 +47,7 @@ model->setQuery("select * from avion");
 model->setHeaderData(0, Qt::Horizontal, QObject::tr("mat"));
 model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom "));
 model->setHeaderData(2, Qt::Horizontal, QObject::tr("cap"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("dispo"));
 
 
 
@@ -72,6 +77,7 @@ bool Avion::modifier(int mat)
       query1.bindValue(":mat",res);
       query1.bindValue(":nom",nom);
       query1.bindValue(":cap",ress);
+
       return  query1.exec();
 
    }
@@ -105,6 +111,7 @@ model->setQuery("select * from avion ORDER BY CAPACITE");
 model->setHeaderData(0, Qt::Horizontal, QObject::tr("mat"));
 model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom "));
 model->setHeaderData(2, Qt::Horizontal, QObject::tr("cap"));
+model->setHeaderData(2, Qt::Horizontal, QObject::tr("dispo"));
 
 
 
@@ -119,5 +126,7 @@ QSqlQueryModel * Avion::chercher(const QString &mat)
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("MATRICULE"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("NOM AVION"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("CAPACITE"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("DISPO"));
+
         return model;
 }

@@ -7,10 +7,11 @@
 class Avion
 {public:
     Avion();
-    Avion(int,QString,long);
+    Avion(int,QString,long,QString);
     int get_mat();
     QString get_nom();
     long get_cap();
+    QString get_dispo();
 
     bool ajouter();
 
@@ -22,7 +23,7 @@ class Avion
     bool supprimer1(int);
     bool modifier(int);
 private:
-    QString nom;
+    QString nom,dispo;
     int mat;
     long cap;
 };
